@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spotify App by Paolo Salud</title>
+</head>
+<body>
+
+<form id="mainForm">
+	<input type="text" id="spotifyTrackInput" name="embedlink" placeholder="Insert Spotify embed link here">
+	<input type="button" id="enter" value="Submit" onclick="reassignUrl()">
+</form>
+
+
+
+
+<iframe src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" id="display"></iframe>
+
+<script>
+
+let url = document.getElementById('spotifyTrackInput').value;
+let idSpotify, embedUrl;
+
+const reassignUrl = () => {
+  url = document.getElementById('spotifyTrackInput').value;
+  idSpotify = url.substring(url.lastIndexOf("/") + 1);
+  embedUrl = `https://open.spotify.com/embed/track/${idSpotify}`;
+
+  document.getElementById('display').setAttribute('src', embedUrl);
+  
+  console.log(`getElementById: ${document.getElementById('spotifyTrackInput').value}`);
+  
+  
+  console.log(embedUrl);
+  console.log(`SPOTIFY ID: ${idSpotify}`);
+  console.log(url);
+}
+
+
+document.getElementById('spotifyTrackInput').value = 'https://jall.jall';
+
+const handleFormEvent = (event) => {
+  console.log(`Handled form event: ${event}`);
+  const url = event.target['embedlink'].value;
+  const idSpotify = url.substring(url.lastIndexOf("/"));
+  const embedUrl = `https://open.spotify.com/embed/track/${idSpotify}`;
+
+  document.getElementById('display').setAttribute('src', embedUrl);
+}
+
+function myFunction() {
+
+	
+  // document.getElementById("display").setAttribute("src", document.getElementById('spotifyEmbed').value);
+
+  // document.getElementById('display')
+  // .setAttribute('src', embedUrl);
+
+// document.getElementById("display").innerHTML = document.getElementById('spotifyEmbed').value;
+}
+</script>
+
+
+ <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
